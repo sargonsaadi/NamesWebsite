@@ -1,0 +1,10 @@
+.edit-box{
+    width: 300px;
+    display:inline-block;
+    vertical-align: top;
+}
+.edit-wrapper{
+    display:inline-block;
+    width:800px;
+    text-align: center;
+}

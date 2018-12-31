@@ -1,0 +1,108 @@
+<div class="edit-wrapper jumbotron"> 
+    <span>EDIT</span>
+
+  <form (submit)="edit2(editName.id)">
+    <!-- NAMES -->
+    <div class="edit-box"> 
+      <div class="form-group has-success">
+          <!-- <label class="form-control-label" for="inputSuccess1">English Name</label> -->
+          Name in Syriac<input type="text" value="{{editName.syr_word}}" class="form-control is-valid" id="inputValid" name="editName.syr_word"[(ngModel)]="editName.syr_word">
+          Name in Arabic<input type="text" value="{{editName.arb_word}}" class="form-control is-valid" id="inputValid" name="editName.arb_word"[(ngModel)]="editName.arb_word">
+          Name in English<input type="text" value="{{editName.eng_word}}" class="form-control is-valid" id="inputValid" name="editName.eng_word"[(ngModel)]="editName.eng_word">
+      </div>
+    </div>
+    <!-- MEANING AND DESC -->
+    <div class="edit-box">
+      <div class="form-group has-success">
+        Meaning<input type="text" value="{{editName.meaning}}" class="form-control is-valid" id="inputValid" name="editName.meaning" [(ngModel)]="editName.meaning">
+        Description in Arabic<input type="text" value="{{editName.arb_desc}}" class="form-control is-valid" id="inputValid" name="editName.arb_desc"[(ngModel)]="editName.arb_desc">
+        Description in Syriac<input type="text" value="{{editName.eng_desc}}" class="form-control is-valid" id="inputValid" name="editName.eng_desc"[(ngModel)]="editName.eng_desc">
+      </div>
+    </div>
+    <!-- GENDER /VARI -->
+    <div class="edit-box">
+      <div class="form-group has-success">
+        Variations<input type="text" value="{{editName.variations}}" class="form-control is-valid" id="inputValid"name="editName.variations" [(ngModel)]="editName.variations">
+        
+        <legend>Gender</legend>
+          <div *ngFor="let gndr of ['male','female','neutral']">
+              <input type="radio" name="gender" [checked]="gndr==editName.gender" >
+              <label  value="gndr">{{gndr}}</label>
+          </div>
+          
+      </div>
+    </div>
+  
+    <!-- STATUS -->
+    <div class="edit-box">
+      <div class="form-group has-success">
+        <legend>Status</legend>
+        <p><input type="radio" value="approved" name="editName.status" [checked]= "'approved'==editName.status" [(ngModel)]="editName.status" >
+          <label>approved</label>
+        </p>
+        <p>
+        <input type="radio" value="pending" name="editName.status" [checked]= "'pending'==editName.status"[(ngModel)]="editName.status" >
+          <label>pending</label>
+        </p>
+        <p>
+        <input type="radio" value="undefined" name="editName.status" [checked]= "'undefined'==editName.status"[(ngModel)]="editName.status" >
+          <label>undefined</label>
+        </p>
+
+        <!-- <div *ngFor="let condition of ['approved','pending','undefined']">
+          <input type="radio" value="condition" name="status" [checked]= "condition==editName.status" >
+          <label>{{condition}}</label>
+        </div> -->
+      </div>
+    </div>
+    
+      <!-- CATEGORIES -->
+      <div class="edit-box">
+        <fieldset class="form-group">
+          <legend>Categories</legend>
+          
+            <!-- <span *ngFor="let cat of ['historic','religious','short','poetic','nature','tradional','creative','non-syriac']">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="{{cat}}" >{{cat}}
+              </label>
+            </span> -->
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="1"name="categories['1']" [(ngModel)]="categories[1]" [checked]= "true==categories['1']">Historic
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="2" name="categories['2']" [(ngModel)]="categories[2]" [checked]= "true==categories['2']">religious
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="8"name="categories['8']" [(ngModel)]="categories[8]" [checked]= "true==categories['8']">short
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="3"name="categories['3']" [(ngModel)]="categories[3]" [checked]= "true==categories['3']">poetic
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="5" name="categories['5']" [(ngModel)]="categories[5]" [checked]= "true==categories['5']">nature
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="6" name="categories['6']" [(ngModel)]="categories[6]" [checked]= "true==categories['6']">traditional
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="4" name="categories['4']" [(ngModel)]="categories[4]" [checked]= "true==categories['4']">creative
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="7" name="categories['7']" [(ngModel)]="categories[7]" [checked]= "true==categories['7']">non-syriac
+            </label>
+        </fieldset>        
+      </div>
+    
+      <!-- Source -->
+      <div class="edit-box">
+          <div class="form-group has-success">
+            Sources<input type="text" value="{{editName.src}}" class="form-control is-valid" id="inputValid" name="editName.src" [(ngModel)]="editName.src">
+          </div>
+        </div>
+    <!-- SUBMIT -->
+    <div class="edit-box">
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button class="btn btn-warning" (click)="hideEdit()">Cancel</button>
+    </div>
+  </form>
+</div>

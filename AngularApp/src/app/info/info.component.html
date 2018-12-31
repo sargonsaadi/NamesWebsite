@@ -1,0 +1,52 @@
+
+  <!-- <div class="alert alert-dismissible alert-success">
+      <button type="button" class="close" id="{{showName.eng_word}}"  (click)="closeInfo($event)">&times;</button>
+      <strong>
+          <span *ngIf="showName.gender == 'female'">
+              <h1>{{showName.eng_word}} <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-f4ce4116003b37a7933046e9ece2e19a-female.png" alt="gender" width="30px" height="30px" ></h1>
+            </span>
+            <span *ngIf="showName.gender == 'male'">
+                <h1>{{showName.eng_word}} <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-5454771825f1a2c1a95625cfaf368b33-male.png" alt="gender" width="30px" height="30px" ></h1>
+            </span>
+            <span *ngIf="showName.gender == 'neutral'">
+                <h1>{{showName.eng_word}} <img src="https://images.vexels.com/media/users/3/127690/isolated/lists/046013072aefe11afa99841eb692a8b3-flat-medical-gender-sign.png" alt="gender" width="30px" height="30px" ></h1>
+            </span>
+      </strong>
+      <p>{{showName.syr_word}}, {{showName.arb_word}}</p>
+      <h3>Meaning: {{showName.meaning}}</h3>
+      <p>DESCRIPTION: {{showName.eng_desc}}</p> 
+      <span *ngFor="let star of stars">
+        <span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="40px" height="40px"alt="star"></span>
+      </span> -->
+      <!-- <p>Rating:{{showName.rating}}</p> -->
+      <!-- <div *ngIf="showName.src">
+        <p>Sources: <a href="#" class="alert-link">click here for source</a></p>
+      </div>
+    </div> -->
+
+    <div class="card border-success mb-5 alert" style="max-width: 30rem;">
+        <button type="button" class="close" id="{{showName.eng_word}}"  (click)="closeInfo($event)">&times;</button>
+        <div class="card-header" >{{showName.meaning}}
+            <!-- <span *ngFor="let star of stars">
+                <span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="30px" height="30px"alt="star"></span>
+            </span> -->
+
+        </div>
+        <div class="card-body">
+            <h1 class="card-title">{{showName.eng_word}}</h1>
+            <h3 style="color:green;">{{showName.syr_word}}, {{showName.arb_word}}</h3>
+            <p class="card-text">{{showName.eng_desc}}</p>
+            <p>Variations: {{showName.variations}}</p>
+            
+        </div>
+    </div>
+    <!-- <div class="jumbotron">
+            <h1 class="display-3">Hello, world!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <p class="lead">
+              <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            </p>
+          </div> -->
+

@@ -1,0 +1,118 @@
+
+<div class="search-master">
+  <div class="filter-wrapper" >
+    <div class="filter-box">
+      <!-- SEARCH BY GENDER -->
+      <h3>GENDER<img src="http://laoblogger.com/images/cartoon-baby-boy-clipart-7.jpg" alt="img" width="60px"height="60px"></h3>
+      <button type="button" class="btn btn-info" id="Male"(click)="hideFilter('Male')" (click)="addFilter('Male', 'gender')">Male</button>
+      <button type="button" class="btn btn-info" id="Female" (click)="hideFilter('Female')" (click)="addFilter('Female','gender')">Female</button>
+      <button type="button" class="btn btn-info" id="Neutral" (click)="hideFilter('Neutral')" (click)="addFilter('Neutral','gender')">Neutral</button>
+    </div>
+    <div class="filter-box">
+      <!-- SEARCH BY CATEGORY -->
+        <h3>CATEGORY<img src="https://i.pinimg.com/originals/3d/2c/c9/3d2cc95207024ebb428021a34b6fc66d.png" alt="img" width="60px"height="60px"></h3>
+        <div >
+          <button type="button" class="btn btn-info " id="Religious" (click)="hideFilter('Religious')" (click)="addFilter('Religious','cat')">Religious</button>
+          <button type="button" class="btn btn-info" id="Historic" (click)="hideFilter('Historic')"(click)="addFilter('Historic','cat')">Historic</button>
+          <button type="button" class="btn btn-info" id="Non-Syriac" (click)="hideFilter('Non-Syriac')"(click)="addFilter('Non-Syriac','cat')">Non-Syriac</button>
+          <button type="button" class="btn btn-info" id="Creative" (click)="hideFilter('Creative')"(click)="addFilter('Creative','cat')">Creative</button>
+          <button type="button" class="btn btn-info" id="Nature" (click)="hideFilter('Nature')"(click)="addFilter('Nature','cat')">Nature</button>
+          <button type="button" class="btn btn-info" id="Traditional" (click)="hideFilter('Traditional')"(click)="addFilter('Traditional','cat')">Traditional</button>
+          <button type="button" class="btn btn-info" id="Poetic" (click)="hideFilter('Poetic')"(click)="addFilter('Poetic','cat')">Poetic</button>
+          <button type="button" class="btn btn-info" id="Short" (click)="hideFilter('Short')"(click)="addFilter('Short','cat')">Short and Sweet</button>
+          
+          
+        </div>
+    </div>
+    <!-- SEARCH BY NAME -->
+    <div class="filter-box">
+        <h3>SEARCH BY NAME<img src="https://i1.wp.com/elephant-pictures.clipartonline.net/_/rsrc/1395606453801/funny-cartoon-elephant-clip-art/baby_cartoon_elephant-17.png" alt="img" width="60px"height="60px"></h3>
+        <form (submit)="searchByName()">
+          <div class="form-group">
+              <input class="form-control form-control-lg" type="text" placeholder="Search for name or meaning..." id="inputLarge" name="name" [(ngModel)]="name">
+              <input type="submit" value="submit">
+          </div>
+        </form>
+        
+    </div>
+  </div>
+  <!-- FILTERS CHOICES -->
+  <div class="filters-choice">
+    <span *ngIf="filtersSelected">
+        <span class="badge badge-pill badge-warning" (click)="reset()">RESET</span>
+    </span>
+      <!-- <span class="badge badge-pill badge-danger">filters:</span> -->
+      
+    <span *ngFor="let filter of filters">
+      <span class="badge badge-pill badge-success" (click)="showFilter(filter[0])" (click)="removeFilter(filter[0])" >{{filter[0]}}</span>    
+    </span>
+
+  </div>
+  <!-- MORE INFO BOX -->
+  <div class="info-box-master">
+    <app-info  *ngIf="nameSelected" [showName]="nameSelected" (closeEmitter)="closeInfoBox($event)"></app-info>
+  </div>
+  <div class="separation">
+
+  </div>
+
+  <!-- RESULTS BOX -->
+
+  <div class="results-box">
+    
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col"(click)="sort('eng_word')">Name <img src="https://cdn3.iconfinder.com/data/icons/ssc-icons/512/sort_p-512.png" alt="sort" width="30px"height="30px"></th>
+            <!-- <th scope="col">Gender</th> -->
+            <th scope="col">Meaning</th>
+            <th scope="col">In Arabic</th>
+            <th scope="col">In Syriac</th>
+            <!-- <th scope="col" (click)="sort('rating')" >Rating<img src="https://cdn3.iconfinder.com/data/icons/ssc-icons/512/sort_p-512.png" alt="sort" width="30px"height="30px"></th> -->
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr class="table-info" *ngFor="let name of names">
+              <th scope="row">
+                <span *ngIf="name.gender == 'female'">
+                  <h1>{{name.eng_word}} <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-f4ce4116003b37a7933046e9ece2e19a-female.png" alt="gender" width="30px" height="30px" ></h1>
+                </span>
+                <span *ngIf="name.gender == 'male'">
+                    <h1>{{name.eng_word}} <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-5454771825f1a2c1a95625cfaf368b33-male.png" alt="gender" width="30px" height="30px" ></h1>
+                </span>
+                <span *ngIf="name.gender == 'neutral'">
+                    <h1>{{name.eng_word}} <img src="https://images.vexels.com/media/users/3/127690/isolated/lists/046013072aefe11afa99841eb692a8b3-flat-medical-gender-sign.png" alt="gender" width="30px" height="30px" ></h1>
+                </span>
+                </th>
+              <!-- <td>{{name.gender}}</td> -->
+              <td>{{name.meaning}}</td>
+              <td>{{name.arb_word}}</td>
+              <td>{{name.syr_word}}</td>
+              
+              <!-- <td>{{name.rating}}</td> -->
+              <td>
+                <!-- <span class="badge badge-pill badge-success">Add to Favorite</span>
+                <span class="badge badge-pill badge-danger">Love</span> -->
+                
+                <span class="badge badge-pill badge-info" id="{{name.id}}" (click)="showInfo(name.id)">More Info</span>
+            
+            </tr>
+        </tbody>
+      </table> 
+  </div>
+  <div class="separation"></div>
+
+  <!-- PAGINATION -->
+  <p>{{nameCount}} results</p>
+  <div class="filter-box">
+    <ul  class="pagination pagination-sm">
+      <li *ngFor="let page of pages" class="page-item">
+
+        <a class="page-link" (click)="showPage(page)" >{{page}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+

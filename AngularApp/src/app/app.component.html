@@ -1,0 +1,42 @@
+
+  
+  <div id="master">
+    <div class="navi-bar">
+      <button type="button" class="btn btn-info"[routerLink]="['/search']" (click)="checkMenu()">Home</button>
+
+      <span *ngIf="!isLoggedIn">
+        <button type="button" class="btn btn-success"[routerLink]="['/login']">Admin Login</button>
+      </span>
+      <span *ngIf="isLoggedIn">
+          <button type="button" class="btn btn-danger"(click)="logout()">Logout</button>
+          <button type="button" class="btn btn-success"[routerLink]="['/dashboard']">Go To Dashboard</button>
+          
+          <!-- <button class="menu-btn" (click)="logout()">Logout</button>  -->
+      </span>
+      
+      
+    </div>
+    
+    <div class="title">
+      <div class="display-3">Syriac name finder<img src="https://www.photospng.com/uploads/cartoon-baby-pic.png" alt="img" width="60px"height="60px"></div>
+    </div>
+
+    <router-outlet (loginEmitter)="toggleMenu()"></router-outlet>
+
+
+    
+      <!-- <div class="nav-bar">
+        <div class="logo"> 
+        </div>
+        <div class="menu">
+          <button class="menu-btn">Search</button>
+          <button class="menu-btn">Add Name</button>
+          <button class="menu-btn">About</button>
+          <button class="menu-btn">Login</button>          
+        </div>
+      </div>   -->
+               
+      <!-- <button class="menu-btn" [routerLink]="['/login']">Admin Login</button>  -->
+
+  </div>
+

@@ -1,0 +1,119 @@
+
+  <div class="filter-wrapper" >
+    <div class="filter-box">
+      <!-- SEARCH BY GENDER -->
+      <h3>GENDER</h3>
+      <button type="button" class="btn btn-info btn-sm" id="Male"(click)="hideFilter('Male')" (click)="addFilter('Male', 'gender')">Male</button>
+      <button type="button" class="btn btn-info btn-sm" id="Female" (click)="hideFilter('Female')" (click)="addFilter('Female','gender')">Female</button>
+      <button type="button" class="btn btn-info btn-sm" id="Neutral" (click)="hideFilter('Neutral')" (click)="addFilter('Neutral','gender')">Neutral</button>
+    </div>
+    <div class="filter-box">
+      <!-- SEARCH BY CATEGORY -->
+        <h3>CATEGORY</h3>
+        <div >
+          <button type="button" class="btn btn-info btn-sm" id="Religious" (click)="hideFilter('Religious')" (click)="addFilter('Religious','cat')">Religious</button>
+          <button type="button" class="btn btn-info btn-sm" id="Historic" (click)="hideFilter('Historic')"(click)="addFilter('Historic','cat')">Historic</button>
+          <button type="button" class="btn btn-info btn-sm" id="Non-Syriac" (click)="hideFilter('Non-Syriac')"(click)="addFilter('Non-Syriac','cat')">Non-Syriac</button>
+          <button type="button" class="btn btn-info btn-sm" id="Creative" (click)="hideFilter('Creative')"(click)="addFilter('Creative','cat')">Creative</button>
+          <button type="button" class="btn btn-info btn-sm" id="Nature" (click)="hideFilter('Nature')"(click)="addFilter('Nature','cat')">Nature</button>
+          <button type="button" class="btn btn-info btn-sm" id="Traditional" (click)="hideFilter('Traditional')"(click)="addFilter('Traditional','cat')">Traditional</button>
+          <button type="button" class="btn btn-info btn-sm" id="Poetic" (click)="hideFilter('Poetic')"(click)="addFilter('Poetic','cat')">Poetic</button>
+          <button type="button" class="btn btn-info btn-sm" id="Short" (click)="hideFilter('Short')"(click)="addFilter('Short','cat')">Short and Sweet</button>
+          
+        </div>
+    </div>
+    <!-- SEARCH BY NAME -->
+    <div class="filter-box">
+        <h3>SEARCH BY NAME</h3>
+        <form (submit)="searchByName()">
+          <div class="form-group">
+              <input class="form-control form-control-sm" type="text" placeholder="Search for name or meaning..." id="inputLarge" name="name" [(ngModel)]="name">
+              <input type="submit" value="submit">
+          </div>
+        </form>
+        
+    </div>
+  </div>
+  <!-- FILTERS CHOICES -->
+  <div class="filters-choice">
+      <!-- <span class="badge badge-pill badge-danger">filters:</span> -->
+      <span *ngIf="filtersSelected">
+          <span class="badge badge-pill badge-warning" (click)="reset()">RESET</span>
+      </span>
+      <span *ngFor="let filter of filters">
+        <span class="badge badge-pill badge-success" (click)="showFilter(filter[0])" (click)="removeFilter(filter[0])" >{{filter[0]}}</span>    
+      </span>
+
+  </div>
+  <!-- EDIT -->
+  <div class="edit">
+      <app-edit *ngIf="nameEditSelected" [editName]="nameEditSelected" (editEmitter)="closeEdit()"></app-edit>
+  </div>
+  <!-- ADD -->
+  <div class="add">
+    <app-add *ngIf="showAdd" (addEmitter)="hideAdd()"></app-add>
+  </div>
+    <!-- ADD NAME BUTTON -->
+    <div class="filter-box">
+      <button type="button" class="btn btn-info btn-lg btn-block" id="add-btn" (click)="add()" >Add New Name</button>
+    </div>
+    
+    <!-- SEPARATION -->
+  <div class="separation">
+    </div>
+  <!-- RESULTS BOX -->
+  <div class="results-box">
+    
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col"(click)="sort('eng_word')">Name<img src="https://cdn3.iconfinder.com/data/icons/ssc-icons/512/sort_p-512.png" alt="sort" width="30px"height="30px"></th>
+              <!-- <th scope="col">Gender</th> -->
+              <th scope="col">Meaning</th>
+              <th scope="col">In Arabic</th>
+              <th scope="col">In Syriac</th>
+              <th scope="col" (click)="sort('status')">Status<img src="https://cdn3.iconfinder.com/data/icons/ssc-icons/512/sort_p-512.png" alt="sort" width="30px"height="30px"></th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr class="table-info" *ngFor="let name of names">
+                <th scope="row">
+                  <span *ngIf="name.gender == 'female'">
+                    <h1>{{name.eng_word}} <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-f4ce4116003b37a7933046e9ece2e19a-female.png" alt="gender" width="30px" height="30px" ></h1>
+                  </span>
+                  <span *ngIf="name.gender == 'male'">
+                      <h1>{{name.eng_word}} <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-5454771825f1a2c1a95625cfaf368b33-male.png" alt="gender" width="30px" height="30px" ></h1>
+                  </span>
+                  <span *ngIf="name.gender == 'neutral'">
+                      <h1>{{name.eng_word}} <img src="https://images.vexels.com/media/users/3/127690/isolated/lists/046013072aefe11afa99841eb692a8b3-flat-medical-gender-sign.png" alt="gender" width="30px" height="30px" ></h1>
+                  </span>
+                  </th>
+                <!-- <td>{{name.gender}}</td> -->
+                <td>{{name.meaning}}</td>
+                <td>{{name.arb_word}}</td>
+                <td>{{name.syr_word}}</td>
+                
+                <td>{{name.status}}</td>
+                <td>
+                 
+                  <button type="button" class="btn btn-danger" (click)="delete(name.id)">Delete</button>                  
+                  <button type="button" class="btn btn-warning"(click)="showEdit(name.id)">Edit</button>
+                </td>
+
+              </tr>
+          </tbody>
+        </table> 
+        <div class="separation"></div>
+
+        <!-- PAGINATION -->
+        <p>{{nameCount}} results</p>
+        <div class="filter-box">
+          <ul  class="pagination pagination-sm">
+            <li *ngFor="let page of pages" class="page-item">
+
+              <a class="page-link" (click)="showPage(page)">{{page}}</a>
+            </li>
+          </ul>
+        </div>
+    </div>

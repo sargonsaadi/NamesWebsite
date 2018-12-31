@@ -1,0 +1,57 @@
+/* *{
+    font-family:'Comic Sans MS';
+} */
+#master{
+    padding:30px;
+    text-align: center;
+}
+.title{
+    height:auto;
+}
+.nav-bar{
+    background:rgb(230, 229, 229);
+    height:80px;
+    padding:10px;
+
+}
+
+.logo{
+    display: inline-block;
+    background:lightblue;
+    width: 120px; 
+    height:60px;
+    left:20px;
+    margin:10px;
+    /* top:50%; */
+    /* position: absolute; */
+}
+.menu{
+    display: inline-block;
+    /* vertical-align: baseline; */
+    position: absolute;
+    /* width: 40%; */
+    right:30px;
+    /* font-size: 40pt; */
+    /* height: auto; */
+    /* background: red; */
+    /* color:blue; */
+}
+.menu-btn{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;  
+    /* right: 40px; */
+}
+
+@media only screen and (max-width: 600px){
+    .menu{
+        background: red;
+    }
+}

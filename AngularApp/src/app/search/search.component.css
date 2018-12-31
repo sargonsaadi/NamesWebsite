@@ -1,0 +1,96 @@
+.search-master{
+    /* margin:20px; */
+    margin-top: 10px;
+    /* background:lightgray; */
+    height:auto;
+    text-align: center;
+}
+.navi-bar{
+    margin:30px;
+    display:inline-block
+    
+}
+
+.info-box-master{
+    /* text-align: center; */
+    display:inline-block;
+    /* width:800px; */
+}
+.separation{
+    
+}
+.results-box{
+    /* background:#78dbbd; */
+    display:inline-block;
+    /* text-align: center; */
+    margin-top:40px;
+    height:auto;
+    width:800px;
+    overflow: auto;
+}
+.filter-wrapper{
+    /* text-align: center; */
+    /* background: red; */
+    margin-top:30px;
+}
+.filter-box{
+    /* background:lightblue; */
+    display:inline-block;
+    width:300px;
+    /* height:120px; */
+    margin:10px;
+    vertical-align: top;
+    /* text-align: center; */
+
+}
+.dot {
+    height: 80px;
+    width: 80px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    margin:5px;
+    position: relative;
+  }
+.dot1{
+    background:rgb(50, 206, 50);
+}
+.dot2{
+    background: rgb(255, 102, 102);
+}
+.filter-label{
+    display:inline-block;
+    /* margin: auto; */
+    font-size:auto;
+    top:30%;    
+    left:2%;
+    right:2%;
+    position: absolute;
+}
+.name-box{
+    background: #889596;
+    height: 100px;
+    margin:10px;
+    text-align: left;
+}
+.filters-choice{
+    /* background: yellow; */
+    height:30px;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+.btn{
+    margin:5px;
+}
+.badge{
+    margin:3px;
+}
+
+.off{
+    display:none;
+}  
+.on{
+    display:inline-block;
+} 
+
